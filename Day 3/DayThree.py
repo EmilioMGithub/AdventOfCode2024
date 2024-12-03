@@ -6,7 +6,6 @@ def getCommands(filteredLine):
     return re.findall(pattern, filteredLine)
 
 def cleanLine(line):
-    newLine = line
     removals = 0
     while "don't()" in newLine:
         # Find the position of "don't()" and "do()"
@@ -14,14 +13,11 @@ def cleanLine(line):
         remove_end = newLine.find("do()", remove_start)
         
         if remove_end == -1:  # No matching "do()" found after "don't()"
-            removals+=1
             newLine = newLine[:remove_start]  # Remove everything after "don't()"
         else:
-            removals+=1
             partOne = newLine[:remove_start]  # Part before "don't()"
             partTwo = newLine[remove_end + len("do()"):]  # Part after "do()"
             newLine = partOne + partTwo  # Concatenate remaining parts
-    print(removals)
     return newLine
 
 #Total input in a line
