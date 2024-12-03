@@ -5,20 +5,17 @@ def getCommands(filteredLine):
     pattern = r"mul\((\d+),(\d+)\)"
     return re.findall(pattern, filteredLine)
 
-def cleanLine(line):
-    removals = 0
-    while "don't()" in newLine:
+def cleanLine(line)
+    while "don't()" in line:
         # Find the position of "don't()" and "do()"
-        remove_start = newLine.find("don't()")
-        remove_end = newLine.find("do()", remove_start)
+        remove_start = line.find("don't()")
+        remove_end = line.find("do()", remove_start)
         
         if remove_end == -1:  # No matching "do()" found after "don't()"
-            newLine = newLine[:remove_start]  # Remove everything after "don't()"
+            line = line[:remove_start]  # Remove everything after "don't()"
         else:
-            partOne = newLine[:remove_start]  # Part before "don't()"
-            partTwo = newLine[remove_end + len("do()"):]  # Part after "do()"
-            newLine = partOne + partTwo  # Concatenate remaining parts
-    return newLine
+            line = line[:remove_start] + line[remove_end + len("do()"):]  # Concatenate remaining parts
+    return line
 
 #Total input in a line
 def lineTotal(line):
