@@ -5,7 +5,7 @@ def getCommands(filteredLine):
     pattern = r"mul\((\d+),(\d+)\)"
     return re.findall(pattern, filteredLine)
 
-def cleanLine(line)
+def cleanLine(line):
     while "don't()" in line:
         # Find the position of "don't()" and "do()"
         remove_start = line.find("don't()")
