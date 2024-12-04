@@ -134,4 +134,4 @@ for row in range(len(matrix)-2):
         if(checkElement(row, col)):
             total += 1
 
-print("Part Two" + str(total))
+print("Part Two: " + str(total))
